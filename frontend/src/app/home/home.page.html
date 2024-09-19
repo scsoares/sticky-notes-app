@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Blank
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Blank</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+    <p>Hola holita</p>
+    <ion-button>Hacer algo</ion-button>
+
+    <ion-list><ion-item *ngFor="let s of shops">
+        <p>Dirección: {{s.address}}</p>
+        <p>Teléfono: {{s.telephone}}</p>
+      </ion-item></ion-list>
+  </div>
+</ion-content>
