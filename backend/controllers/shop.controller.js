@@ -34,9 +34,15 @@ exports.findOne = (req, res) => {
 exports.update = (req, res) => {
 
 };
-s
+
 
 exports.delete = (req, res) => {
+
+    const id = req.params.id;
+    Shop.destroy({ where: { id: id } }).then(() => {
+        console.log("Entry erased");
+        res.send({ message: "Erased." });
+    })
 
 };
 

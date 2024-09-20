@@ -2,15 +2,23 @@
 
 const app = express();
 
+const cors = require("cors");
+
 //parse requests of content-type - application/json
 app.use(express.json());
+
+const corsOptions = {
+    origin: "http://localhost:8100"
+}
+
+app.use(cors(corsOptions));
 
 //parse requests of content-type
 app.use(express.urlencoded({ extended: true }));
 
 const db = require("./models");
 
-db.sequelize.sync({ force: true }).then(() => {
+db.sequelize.sync().then(() => {
     console.log("Database already in sync.")
 })
 

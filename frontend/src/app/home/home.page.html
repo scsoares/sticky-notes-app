@@ -15,7 +15,7 @@
 
   <div id="container">
     <p>Hola holita</p>
-    <ion-button>Hacer algo</ion-button>
+    <ion-button (click)="goToShopList()">Hacer algo</ion-button>
 
     <ion-list><ion-item *ngFor="let s of shops">
         <p>Dirección: {{s.address}}</p>
