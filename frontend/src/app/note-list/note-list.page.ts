@@ -21,14 +21,19 @@ export class NoteListPage implements OnInit {
 
   allColors: any = ['red', 'purple', 'green', 'yellow'];
 
+  selectedTab: number = 1;
+
+  isAlertOpen = false;
+  alertButtons = ['Ok'];
+
   constructor(
-    public formBuilder: FormBuilder,
+    public fb: FormBuilder,
     private noteService: NoteService,
     private route: Router
   ) {
-    this.noteForm = this.formBuilder.group({
+    this.noteForm = this.fb.group({
       content: ['', Validators.compose([Validators.required])],
-      color: ['', Validators.compose([Validators.required])],
+      color: ['danger', Validators.compose([Validators.required])],
     });
   }
 
@@ -36,15 +41,24 @@ export class NoteListPage implements OnInit {
     this.getAllNotes();
   }
 
+  selectTab(tab: number) {
+    this.selectedTab = tab;
+  }
+
   addNote() {
     if (this.noteForm.valid) {
       console.log('Valid note form:', this.noteForm.value);
       this.noteService.create(this.noteForm.value).subscribe((response) => {
-        this.route.navigateByUrl('/note-list/add-note');
+        this.getAllNotes();
+        this.selectTab(1);
       });
     } else {
       console.log('Invalid form.');
     }
+  }
+
+  setOpen(isOpen: boolean) {
+    this.isAlertOpen = isOpen;
   }
 
   getFormControl(field: string) {

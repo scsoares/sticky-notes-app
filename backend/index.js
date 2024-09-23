@@ -13,8 +13,8 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-//parse requests of content-type
-app.use(express.urlencoded({ extended: true }));
+// //parse requests of content-type
+// app.use(express.urlencoded({ extended: true }));
 
 const db = require("./models");
 

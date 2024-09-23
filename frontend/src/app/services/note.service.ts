@@ -18,15 +18,12 @@ export class NoteService {
 
   create(note: any) {
     const headers = new HttpHeaders({
-      'Content-Type': 'application/x-www-form-urlencoded',
+      'Content-Type': 'application/json',
     });
 
-    const body = new URLSearchParams();
-
-    body.append('content', note.content);
-    body.append('content', note.color);
-
-    return this.httpClient.post(this.serverUrl, body.toString(), { headers });
+    return this.httpClient.post(this.serverUrl, JSON.stringify(note), {
+      headers,
+    });
   }
 
   getNotesQuery(query: string) {

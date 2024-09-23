@@ -39,4 +39,101 @@ ion-card {
   flex-direction: column-reverse;
 }
 
+// ion-radio::part(container) {
+//   width: 40px;
+//   height: 40px;
+
+//   border-radius: 8px;
+//   border: 2px solid #ddd;
+// }
+
+#red::part(container) {
+  width: 40px;
+  height: 40px;
+
+  border-radius: 8px;
+  border: 2px solid #ddd;
+  background-color: #ef473a;
+}
+
+#purple::part(container) {
+  width: 40px;
+  height: 40px;
+
+  border-radius: 8px;
+  border: 2px solid #ddd;
+  background-color: #886aea;
+}
+
+#green::part(container) {
+  width: 40px;
+  height: 40px;
+
+  border-radius: 8px;
+  border: 2px solid #ddd;
+  background-color: #33cd5f;
+}
+
+#yellow::part(container) {
+  width: 40px;
+  height: 40px;
+
+  border-radius: 8px;
+  border: 2px solid #ddd;
+  background-color: #ffc900;
+}
+
+ion-radio::part(mark) {
+  background: none;
+  transition: none;
+  transform: none;
+  border-radius: 0;
+}
+
+ion-radio.radio-checked::part(container) {
+  border-color: transparent;
+}
+
+ion-radio.radio-checked::part(mark) {
+  width: 6px;
+  height: 10px;
+
+  border-width: 0px 2px 2px 0px;
+  border-style: solid;
+  border-color: #fff;
+
+  transform: rotate(45deg);
+}
+
+ion-textarea {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  background-color: #ececec;
+}
+
+#choose-color {
+  margin-top: 5rem;
+  display: flex;
+  align-items: center;
+  gap: 5rem;
+  justify-content: center;
+}
+
+#header-delete {
+  display: flex;
+  padding-right: 2rem;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#exports {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10rem;
+  gap: 5rem;
+  align-items: center;
+  justify-content: center;
+}
+
 //styling code source: https://dev.to/fm3ndoza/styling-ion-tabs-in-ionic-5-clm

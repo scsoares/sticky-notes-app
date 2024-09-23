@@ -1,89 +1,143 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>My notes</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-tabs>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">My notes</ion-title>
-      <ion-chip (click)="getAllNotes()" color="medium">All colors</ion-chip>
-      <ion-chip (click)="getAllNotesRed()" color="danger">Red</ion-chip>
-      <ion-chip (click)="getAllNotesPurple()" color="tertiary">Purple</ion-chip>
-      <ion-chip (click)="getAllNotesGreen()" color="success">Green</ion-chip>
-      <ion-chip (click)="getAllNotesYellow()" color="warning">Yellow</ion-chip>
+  <ion-tab tab="notes">
+    <div id="list-page">
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>My notes</ion-title>
+        </ion-toolbar>
+      </ion-header>
 
-    </ion-toolbar>
-  </ion-header>
+      <ion-content [fullscreen]="true">
+        <div>
+          <ion-header collapse="condense">
+            <ion-toolbar>
+              <ion-title size="large">My notes</ion-title>
+              <ion-chip (click)="getAllNotes()" color="medium">All colors</ion-chip>
+              <ion-chip (click)="getAllNotesRed()" color="danger">Red</ion-chip>
+              <ion-chip (click)="getAllNotesPurple()" color="tertiary">Purple</ion-chip>
+              <ion-chip (click)="getAllNotesGreen()" color="success">Green</ion-chip>
+              <ion-chip (click)="getAllNotesYellow()" color="warning">Yellow</ion-chip>
+            </ion-toolbar>
+          </ion-header>
 
+          <ion-list id="notes">
+            <ion-item *ngFor="let n of filteredNotes">
+              <ion-card color={{n.color}}>
+                <div id="header-delete"><ion-card-header>
+                    <ion-card-subtitle>{{n.updatedAt}}</ion-card-subtitle>
+                  </ion-card-header>
 
-  <!-- <ion-list><ion-item *ngFor=" let n of notes">
-        <p>Dirección: {{n.content}}</p>
-        </ion-item></ion-list> -->
+                  <ion-icon name="trash-outline" size="small"></ion-icon>
+                </div>
 
-  <ion-list id="notes">
-    <ion-item *ngFor="let n of filteredNotes"><ion-card color={{n.color}}>
-        <ion-card-header>
-
-          <ion-card-subtitle>{{n.updatedAt}}</ion-card-subtitle>
-        </ion-card-header>
-
-        <ion-card-content>
-          {{n.content}}
-        </ion-card-content>
-      </ion-card>
-    </ion-item>
-  </ion-list>
-
-
-  <ion-tab tab="add-note">
-    <form [formGroup]="noteForm" (ngSubmit)="addNote()">
-
-      <ion-item>
-        <ion-label position="floating">Write your note here</ion-label>
-        <ion-input formControlName="content" type="text" label="What's on your mind?" label-placement="floating"
-          fill="outline" placeholder=""></ion-input>
-        <ion-note color="danger"
-          *ngIf="getFormControl('content')?.hasError('required') && getFormControl('brand')?.touched">Note is
-          empty. Write something.</ion-note>
-      </ion-item>
-
-      <ion-item>
-        <ion-radio formControlName="color" id="red" value="danger" (click)="checkColor('red')" color="danger">
-        </ion-radio>
-        <ion-radio formControlName="color" id="purple" value="tertiary" (click)="checkColor('purple')" color="tertiary">
-        </ion-radio>
-        <ion-radio formControlName="color" id="green" value="success" (click)="checkColor('green')" color="success">
-        </ion-radio>
-        <ion-radio formControlName="color" id="yellow" value="warning" (click)="checkColor('yellow')" color="warning">
-        </ion-radio>
-      </ion-item>
-
-
-      <ion-button expand="full" type="submit"></ion-button>
-
-
-    </form>
-
+                <ion-card-content>
+                  {{n.content}}
+                </ion-card-content>
+              </ion-card>
+            </ion-item>
+          </ion-list>
+        </div>
+      </ion-content>
+    </div>
   </ion-tab>
 
 
-  <ion-tabs>
-    <ion-tab-bar slot=" bottom">
-      <ion-tab-button tab="add-note">
-        <ion-icon name="add-sharp"></ion-icon>
-        Add note
-      </ion-tab-button>
-      <ion-tab-button tab="search">
-        <ion-icon name="search"></ion-icon>
-        Search
-      </ion-tab-button>
 
-      <ion-tab-button tab="export">
-        <ion-icon name="save-outline"></ion-icon>
-        Export notes
-      </ion-tab-button>
-    </ion-tab-bar>
-  </ion-tabs>
-</ion-content>
+  <ion-tab tab="add-note">
+    <div id="add-page">
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Add a new note</ion-title>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content [fullscreen]="true">
+        <div>
+          <ion-header collapse="condense">
+            <ion-toolbar>
+              <ion-title size="large">Add a new note</ion-title>
+            </ion-toolbar>
+          </ion-header>
+
+          <form [formGroup]="noteForm" (ngSubmit)="addNote()">
+            <ion-item>
+              <ion-textarea label="" rows=10 formControlName="content" labelPlacement="floating" fill="outline"
+                placeholder="What's on your mind?" [counter]="true" maxlength="255"></ion-textarea>
+              <br />
+              <br />
+            </ion-item>
+
+            <div id="choose-color"><ion-radio-group formControlName="color" value="danger">
+                <ion-radio id="red" value="danger" aria-label="Red checkbox"></ion-radio>
+                <ion-radio id="purple" value="tertiary" aria-label="Purple checkbox"></ion-radio>
+                <ion-radio id="green" value="success" aria-label="Green checkbox"></ion-radio>
+                <ion-radio id="yellow" value="warning" aria-label="Yellow checkbox"></ion-radio>
+              </ion-radio-group>
+
+              <ion-button id="saved-alert" type="submit">Save note</ion-button>
+
+              <ion-alert trigger="saved-alert" header="Your note was saved!" message="Check the notes tab to see it."
+                [buttons]="alertButtons"></ion-alert>
+            </div>
+          </form>
+
+        </div>
+      </ion-content>
+    </div>
+  </ion-tab>
+
+
+
+
+
+  <ion-tab tab="export">
+    <div id="export-page">
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Export notes</ion-title>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content [fullscreen]="true">
+        <div>
+          <ion-header collapse="condense">
+            <ion-toolbar>
+              <ion-title size="large">Export notes</ion-title>
+            </ion-toolbar>
+          </ion-header>
+
+          <div id="exports"><ion-button id="saved-alert" type="submit">Export notes as .json file</ion-button>
+            <ion-button id="saved-alert" type="submit">Export notes as .txt file</ion-button>
+          </div>
+
+
+        </div>
+      </ion-content>
+    </div>
+  </ion-tab>
+
+
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="notes" (click)="selectTab(1)">
+      <ion-icon name="document-outline"></ion-icon>
+      Notes
+    </ion-tab-button>
+
+    <ion-tab-button tab="add-note" (click)="selectTab(2)">
+      <ion-icon name="add-sharp"></ion-icon>
+      Add note
+    </ion-tab-button>
+
+    <!-- <ion-tab-button tab="search">
+      <ion-icon name="search"></ion-icon>
+      Search
+    </ion-tab-button> -->
+
+    <ion-tab-button tab="export" (click)="selectTab(1)">
+      <ion-icon name="save-outline"></ion-icon>
+      Export notes
+    </ion-tab-button>
+  </ion-tab-bar>
+
+</ion-tabs>

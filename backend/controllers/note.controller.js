@@ -4,10 +4,14 @@ const Notebook = db.notebook;
 
 exports.create = (req, res) => {
 
+    console.log(req.body);
+
     const note = {
         content: req.body.content,
         color: req.body.color
     };
+
+    console.log('Note:', note);
 
     Notebook.create(note).then(data => {
         res.send(data);
