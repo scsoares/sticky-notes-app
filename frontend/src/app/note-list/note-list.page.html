@@ -1,0 +1,89 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>My notes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">My notes</ion-title>
+      <ion-chip (click)="getAllNotes()" color="medium">All colors</ion-chip>
+      <ion-chip (click)="getAllNotesRed()" color="danger">Red</ion-chip>
+      <ion-chip (click)="getAllNotesPurple()" color="tertiary">Purple</ion-chip>
+      <ion-chip (click)="getAllNotesGreen()" color="success">Green</ion-chip>
+      <ion-chip (click)="getAllNotesYellow()" color="warning">Yellow</ion-chip>
+
+    </ion-toolbar>
+  </ion-header>
+
+
+  <!-- <ion-list><ion-item *ngFor=" let n of notes">
+        <p>Dirección: {{n.content}}</p>
+        </ion-item></ion-list> -->
+
+  <ion-list id="notes">
+    <ion-item *ngFor="let n of filteredNotes"><ion-card color={{n.color}}>
+        <ion-card-header>
+
+          <ion-card-subtitle>{{n.updatedAt}}</ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+          {{n.content}}
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+  </ion-list>
+
+
+  <ion-tab tab="add-note">
+    <form [formGroup]="noteForm" (ngSubmit)="addNote()">
+
+      <ion-item>
+        <ion-label position="floating">Write your note here</ion-label>
+        <ion-input formControlName="content" type="text" label="What's on your mind?" label-placement="floating"
+          fill="outline" placeholder=""></ion-input>
+        <ion-note color="danger"
+          *ngIf="getFormControl('content')?.hasError('required') && getFormControl('brand')?.touched">Note is
+          empty. Write something.</ion-note>
+      </ion-item>
+
+      <ion-item>
+        <ion-radio formControlName="color" id="red" value="danger" (click)="checkColor('red')" color="danger">
+        </ion-radio>
+        <ion-radio formControlName="color" id="purple" value="tertiary" (click)="checkColor('purple')" color="tertiary">
+        </ion-radio>
+        <ion-radio formControlName="color" id="green" value="success" (click)="checkColor('green')" color="success">
+        </ion-radio>
+        <ion-radio formControlName="color" id="yellow" value="warning" (click)="checkColor('yellow')" color="warning">
+        </ion-radio>
+      </ion-item>
+
+
+      <ion-button expand="full" type="submit"></ion-button>
+
+
+    </form>
+
+  </ion-tab>
+
+
+  <ion-tabs>
+    <ion-tab-bar slot=" bottom">
+      <ion-tab-button tab="add-note">
+        <ion-icon name="add-sharp"></ion-icon>
+        Add note
+      </ion-tab-button>
+      <ion-tab-button tab="search">
+        <ion-icon name="search"></ion-icon>
+        Search
+      </ion-tab-button>
+
+      <ion-tab-button tab="export">
+        <ion-icon name="save-outline"></ion-icon>
+        Export notes
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-content>

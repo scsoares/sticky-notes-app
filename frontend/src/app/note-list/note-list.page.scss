@@ -1,0 +1,42 @@
+ion-tab-bar {
+  bottom: 20px;
+  position: relative;
+  border-radius: 16px;
+  width: 92%;
+  margin: 0 auto;
+  padding-bottom: 10px;
+}
+
+ion-tab-button {
+  --color: var(--ion-color-medium);
+  --color-selected: var(--ion-color-primary);
+
+  &::before {
+    background-color: transparent;
+    display: block;
+    content: "";
+    margin: 0 auto;
+    width: 20px;
+    height: 2px;
+  }
+
+  &.tab-selected::before {
+    background-color: var(--ion-color-primary);
+  }
+}
+
+#colorCircle {
+  width: 5rem;
+  height: 5rem;
+}
+
+ion-card {
+  width: 100%;
+}
+
+#notes {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+//styling code source: https://dev.to/fm3ndoza/styling-ion-tabs-in-ionic-5-clm

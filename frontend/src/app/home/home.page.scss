@@ -25,3 +25,16 @@
 #container a {
   text-decoration: none;
 }
+
+#credits {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 150%;
+  justify-content: center;
+  align-items: end;
+}
+
+#open-button {
+  margin-top: 50px;
+}

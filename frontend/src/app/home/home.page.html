@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Notebook app
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,17 +9,32 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Note2book 📝</ion-title>
+
     </ion-toolbar>
   </ion-header>
 
   <div id="container">
-    <p>Hola holita</p>
-    <ion-button (click)="goToShopList()">Hacer algo</ion-button>
+    <strong>Simple note application made with ionic (angular) + express + sequelize. </strong>
+    <h5>- Write down your notes
+    </h5>
+    <h5>- Change or delete them as you wish
+    </h5>
+    <h5>- Opt: Organize them by colors
+    </h5>
+    <h5>- Search by text or filter by color
+    </h5>
+    <h5>- Export notes to .json or simple .txt file
+    </h5>
 
-    <ion-list><ion-item *ngFor="let s of shops">
-        <p>Dirección: {{s.address}}</p>
-        <p>Teléfono: {{s.telephone}}</p>
-      </ion-item></ion-list>
+
+    <ion-button id="open-button" size="large" (click)="goToNoteList()">Open my notes</ion-button>
+
+    <p id="credits">Made with <span style="color: red">♥</span> by Sarah Soares<br></p>
+
+    <!-- <ion-list><ion-item *ngFor=" let n of notes">
+        <p>Dirección: {{n.content}}</p>
+        </ion-item></ion-list> -->
+
   </div>
 </ion-content>

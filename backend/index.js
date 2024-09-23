@@ -29,7 +29,7 @@ app.get("/", (req, res) => {
     })
 });
 
-require("./routes/shop.routes.js")(app);
+require("./routes/note.routes")(app);
 
 const PORT = process.env.PORT || 8080;
 
