@@ -117,9 +117,16 @@ export class NoteListPage implements OnInit {
     this.filteredNotes = this.notesYellow;
   }
 
-  checkColor(colorName: string) {
-    const color: any = document.getElementById(colorName);
+  // checkColor(colorName: string) {
+  //   const color: any = document.getElementById(colorName);
 
-    color.innerHTML = `<ion-icon slot="icon-only" name="checkmark-outline"></ion-icon>`;
+  //   color.innerHTML = `<ion-icon slot="icon-only" name="checkmark-outline"></ion-icon>`;
+  // }
+
+  deleteNote(id: any) {
+    this.noteService.delete(id).subscribe((response) => {
+      this.getAllNotes();
+      this.selectTab(1);
+    });
   }
 }

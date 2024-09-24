@@ -28,7 +28,7 @@
                     <ion-card-subtitle>{{n.updatedAt}}</ion-card-subtitle>
                   </ion-card-header>
 
-                  <ion-icon name="trash-outline" size="small"></ion-icon>
+                  <ion-icon name="trash-outline" size="small" (click)="deleteNote(n.id)"></ion-icon>
                 </div>
 
                 <ion-card-content>

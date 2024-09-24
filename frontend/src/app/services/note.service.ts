@@ -12,9 +12,9 @@ export class NoteService {
     return this.httpClient.get(this.serverUrl);
   }
 
-  getNotesColor(color: string) {
-    return this.httpClient.get(this.serverUrl);
-  }
+  // getNotesColor(color: string) {
+  //   return this.httpClient.get(this.serverUrl);
+  // }
 
   create(note: any) {
     const headers = new HttpHeaders({
@@ -26,7 +26,11 @@ export class NoteService {
     });
   }
 
-  getNotesQuery(query: string) {
-    return this.httpClient.get(this.serverUrl);
+  // getNotesQuery(query: string) {
+  //   return this.httpClient.get(this.serverUrl);
+  // }
+
+  delete(id: any) {
+    return this.httpClient.delete(`${this.serverUrl}/${id}`);
   }
 }
