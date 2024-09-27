@@ -41,6 +41,10 @@ export class NoteListPage implements OnInit {
     this.getAllNotes();
   }
 
+  goToUpdateNote() {
+    this.route.navigateByUrl('/update-note');
+  }
+
   selectTab(tab: number) {
     this.selectedTab = tab;
   }
@@ -128,5 +132,9 @@ export class NoteListPage implements OnInit {
       this.getAllNotes();
       this.selectTab(1);
     });
+  }
+
+  invertDate(str: string) {
+    return str.split('-').reverse().join('-');
   }
 }

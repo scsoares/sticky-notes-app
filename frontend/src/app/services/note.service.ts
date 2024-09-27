@@ -33,4 +33,13 @@ export class NoteService {
   delete(id: any) {
     return this.httpClient.delete(`${this.serverUrl}/${id}`);
   }
+
+  update(id: any, note: any) {
+    let newData: any = {
+      id: note.id,
+      content: note.content,
+      color: note.color,
+    };
+    return this.httpClient.put(`${this.serverUrl}/${id}`, newData);
+  }
 }

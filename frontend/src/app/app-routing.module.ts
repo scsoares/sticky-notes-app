@@ -32,6 +32,18 @@ const routes: Routes = [
     redirectTo: 'note-list/add-note',
     pathMatch: 'full',
   },
+  {
+    path: 'update-note',
+    loadChildren: () =>
+      import('./update-note/update-note.module').then(
+        (m) => m.UpdateNotePageModule
+      ),
+  },
+  {
+    path: '',
+    redirectTo: 'update-note',
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({

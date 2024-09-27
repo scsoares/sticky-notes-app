@@ -25,10 +25,14 @@
             <ion-item *ngFor="let n of filteredNotes">
               <ion-card color={{n.color}}>
                 <div id="header-delete"><ion-card-header>
-                    <ion-card-subtitle>{{n.updatedAt}}</ion-card-subtitle>
+                    <ion-card-subtitle>{{invertDate(n.updatedAt.slice(0,10))}}</ion-card-subtitle>
                   </ion-card-header>
 
-                  <ion-icon name="trash-outline" size="small" (click)="deleteNote(n.id)"></ion-icon>
+                  <div id="card-buttons"><ion-icon name="create-outline" size="small"
+                      (click)="goToUpdateNote(n.id)"></ion-icon>
+
+                    <ion-icon name="trash-outline" size="small" (click)="deleteNote(n.id)"></ion-icon>
+                  </div>
                 </div>
 
                 <ion-card-content>
@@ -116,6 +120,8 @@
       </ion-content>
     </div>
   </ion-tab>
+
+
 
 
   <ion-tab-bar slot="bottom">

@@ -53,6 +53,22 @@ exports.findAllQuery = (req, res) => {
 
 exports.update = (req, res) => {
 
+    console.log("Body is:" + req.body);
+
+    const newData = {
+        content: req.body[0],
+        color: req.body[1]
+    };
+
+    const id = req.params.id;
+
+    Notebook.update({ where: { id: id } }).then(() => {
+        res.send(newData);
+        console.log("Data updated");
+    }).catch(err => {
+        res.status(500).send({ message: err.message || "Some error occurred while updating note." });
+    });
+
 };
 
 
@@ -63,6 +79,8 @@ exports.delete = (req, res) => {
         console.log("Entry erased");
         res.send({ message: "Erased." });
     })
+
+
 
 };
 
