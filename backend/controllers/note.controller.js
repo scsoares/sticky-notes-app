@@ -55,14 +55,11 @@ exports.update = (req, res) => {
 
     console.log("Body is:" + req.body);
 
-    const newData = {
-        content: req.body[0],
-        color: req.body[1]
-    };
-
     const id = req.params.id;
+    const { content, color } = req.body;
 
-    Notebook.update({ where: { id: id } }).then(() => {
+
+    Notebook.update({ content, color }, { where: { id: id } }).then(() => {
         res.send(newData);
         console.log("Data updated");
     }).catch(err => {

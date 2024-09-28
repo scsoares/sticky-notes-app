@@ -36,10 +36,12 @@ export class NoteService {
 
   update(id: any, note: any) {
     let newData: any = {
-      id: note.id,
       content: note.content,
       color: note.color,
     };
-    return this.httpClient.put(`${this.serverUrl}/${id}`, newData);
+
+    const headers = { 'Content-Type': 'application/json' };
+
+    return this.httpClient.put(`${this.serverUrl}/${id}`, newData, { headers });
   }
 }

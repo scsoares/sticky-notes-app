@@ -33,7 +33,7 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'update-note',
+    path: 'update-note/:id',
     loadChildren: () =>
       import('./update-note/update-note.module').then(
         (m) => m.UpdateNotePageModule

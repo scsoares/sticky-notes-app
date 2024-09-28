@@ -26,6 +26,8 @@ export class NoteListPage implements OnInit {
   isAlertOpen = false;
   alertButtons = ['Ok'];
 
+  updateNoteId: string = '';
+
   constructor(
     public fb: FormBuilder,
     private noteService: NoteService,
@@ -41,8 +43,8 @@ export class NoteListPage implements OnInit {
     this.getAllNotes();
   }
 
-  goToUpdateNote() {
-    this.route.navigateByUrl('/update-note');
+  goToUpdateNote(id: string) {
+    this.route.navigate(['/update-note', id]);
   }
 
   selectTab(tab: number) {
