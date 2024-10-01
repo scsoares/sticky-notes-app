@@ -8,6 +8,11 @@ This application allows you to write and manage short notes easily. You can orga
 
 Google Chrome or any other browser installed. VSCode, MySQL Server, MySQL Workbench and node.js installed.
 
+
+### Endpoints:
+
+https://documenter.getpostman.com/view/37801455/2sAXxJhEy2 
+
 ### Instructions:
 
 1. ```
