@@ -51,9 +51,7 @@ export class UpdateNotePage implements OnInit {
         .subscribe((response) => {
           console.log('Your note was successfully updated');
         });
-      this.getAllNotes();
-      this.route.navigateByUrl('/note-list');
-      this.getAllNotes();
+      this.route.navigate(['/note-list/notes']);
     } else {
       console.log('Invalid form.');
     }

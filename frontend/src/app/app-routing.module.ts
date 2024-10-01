@@ -23,6 +23,16 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
+    path: 'note-list/notes',
+    loadChildren: () =>
+      import('./note-list/note-list.module').then((m) => m.NoteListPageModule),
+  },
+  {
+    path: '',
+    redirectTo: 'note-list/notes',
+    pathMatch: 'full',
+  },
+  {
     path: 'note-list/add-note',
     loadChildren: () =>
       import('./note-list/note-list.module').then((m) => m.NoteListPageModule),

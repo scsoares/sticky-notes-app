@@ -56,7 +56,8 @@ export class NoteListPage implements OnInit {
       console.log('Valid note form:', this.noteForm.value);
       this.noteService.create(this.noteForm.value).subscribe((response) => {
         this.getAllNotes();
-        this.selectTab(1);
+        this.route.navigate(['/note-list/notes']);
+        // this.selectTab(1);
       });
     } else {
       console.log('Invalid form.');
